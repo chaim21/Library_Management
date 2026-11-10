@@ -1,5 +1,10 @@
 from data import books
-from book_manage import display_books
+from book_manage import display_books,search_book
+from validations import is_empty
+from i_o import get_input
+
+
+
 def shoe_menu():
     print('''
     ================================ 
@@ -20,7 +25,16 @@ def run():
     while user_choice != "8":
         shoe_menu()
         user_choice = input("Choose an option:\n")
-        if user_choice == "1":
-            display_books(books)
+        match user_choice:
+            case "1":
+                display_books(books)
+
+            case "2":
+                name_book = get_input("enter name of the book:",is_empty)
+                books_found = search_book(books,name_book)
+                if books_found:
+                    display_books(books_found)
+                else:
+                    print("book not found\n")
 
 run()
