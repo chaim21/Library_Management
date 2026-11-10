@@ -56,3 +56,10 @@ def get_available_books(books):
         if book["available"]:
             available.append(book)
     return available
+
+def get_books_by_author(books, author):
+    found = []
+    for book in books:
+        if book["author"].lower() == author.lower():
+            found.append(book)
+    return found

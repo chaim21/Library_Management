@@ -1,5 +1,5 @@
 from data import books
-from book_manage import display_books,search_book,get_next_id,add_book,borrow_book,get_available_books,return_book
+from book_manage import display_books, search_book, get_next_id, add_book, borrow_book, get_available_books, return_book, get_books_by_author
 from validations import is_empty,valid_book,valid_num
 from i_o import get_input
 
@@ -60,6 +60,13 @@ def run():
                 else:
                     print("No books available")
 
+            case "7":
+                author = get_input("Enter the author's name\n",is_empty)
+                found = get_books_by_author(books,author)
+                if found:
+                    display_books(found)
+                else:
+                    print("There is no author with this name.")
 
 
 run()
