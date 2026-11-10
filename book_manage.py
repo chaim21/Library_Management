@@ -1,3 +1,4 @@
+from data import books
 def display_books(books:list):
     for book in books:
         dispaly_book(book)
@@ -18,3 +19,13 @@ def dispaly_book(book:dict):
     year: {book["year"]}
     available: {book[ "available"]}
 ''')
+
+def add_book(books, name, author, year):
+    new_book = {"id": get_next_id(books), "name": name, "author": author, "year": year, "available":True}
+    books.append(new_book)
+    return True
+
+
+def get_next_id(books:list):
+    new_id = max(books,key = lambda i : i["id"])
+    return new_id["id"] + 1

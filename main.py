@@ -1,6 +1,6 @@
 from data import books
-from book_manage import display_books,search_book
-from validations import is_empty
+from book_manage import display_books,search_book,get_next_id,add_book
+from validations import is_empty,valid_book
 from i_o import get_input
 
 
@@ -36,5 +36,14 @@ def run():
                     display_books(books_found)
                 else:
                     print("book not found\n")
+
+            case "3":
+                name,author,year = valid_book(books)
+                if name:
+                    add_book(books,name,author,year)
+                    print("The book was added successfully.")
+                    
+
+
 
 run()
