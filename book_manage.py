@@ -40,3 +40,19 @@ def borrow_book(books, book_id):
                 return False,"The book is already checked out."
     return False,"book not exists"
 
+def return_book(books, book_id):
+    for book in books:
+        if book["id"] == book_id:
+            if not book["available"]:
+                book["available"] = True
+                return True,"The book was returned successfully."
+            else:
+                return False,"An existing book cannot be returned."
+    return False,"book not exists"
+
+def get_available_books(books):
+    available = []
+    for book in books:
+        if book["available"]:
+            available.append(book)
+    return available
