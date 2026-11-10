@@ -1,6 +1,6 @@
 from data import books
-from book_manage import display_books,search_book,get_next_id,add_book
-from validations import is_empty,valid_book
+from book_manage import display_books,search_book,get_next_id,add_book,borrow_book
+from validations import is_empty,valid_book,valid_num
 from i_o import get_input
 
 
@@ -43,6 +43,10 @@ def run():
                     add_book(books,name,author,year)
                     print("The book was added successfully.")
                     
+            case "4":
+                book_id = get_input("Enter the ID of the book to be borrowed\n",valid_num)
+                borrow,msg = borrow_book(books,book_id)
+                print(msg)
 
 
 

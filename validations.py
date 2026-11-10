@@ -16,10 +16,10 @@ def valid_num(num):
 def valid_book(books):
     name = get_input("enter book name:\n",is_empty)
     author = get_input("enter author book:\n",is_empty)
-    year = get_input("Enter publication year\n",valid_num)
     for book in books:
-        if book["name"] == name and book["author"] == author:
-            print("A book with the same title and author already exists.\n")
-            return None,None,None
+            if book["name"].lower() == name.lower() and book["author"].lower() == author.lower():
+                print("A book with the same title and author already exists.\n")
+                return None,None,None
+    year = get_input("Enter publication year\n",valid_num)
     return name,author,year
 

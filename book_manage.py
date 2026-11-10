@@ -29,3 +29,14 @@ def add_book(books, name, author, year):
 def get_next_id(books:list):
     new_id = max(books,key = lambda i : i["id"])
     return new_id["id"] + 1
+
+def borrow_book(books, book_id):
+    for book in books:
+        if book["id"] == book_id:
+            if book["available"]:
+                book["available"] = False
+                return True,"The book was successfully borrowed."
+            else:
+                return False,"The book is already checked out."
+    return False,"book not exists"
+
